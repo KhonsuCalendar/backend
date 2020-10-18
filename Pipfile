@@ -9,6 +9,8 @@ verify_ssl = true
 flask = "*"
 fastapi = "*"
 sqlalchemy = "*"
+uvloop = "*"
+uvicorn = "*"
 
 [requires]
 python_version = "3.8"
