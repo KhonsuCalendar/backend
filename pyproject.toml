@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "lunar_calendar_api"
+version = "0.1.0"
+description = ""
+authors = ["Kylan Byrd <aviananalyst@gmail.com>"]
+packages = [
+  { from = "", include = "lunar_api" },
+]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+flask = "*"
+fastapi = "*"
+sqlalchemy = "*"
+uvloop = "*"
+uvicorn = "*"
+alembic = "*"
+psycopg2-binary = "^2.8.6"
+
+[tool.poetry.dev-dependencies]
+
+flask = "*"
+fastapi = "*"
+sqlalchemy = "*"
+uvloop = "*"
+uvicorn = "*"
+alembic = "*"
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

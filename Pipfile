@@ -11,6 +11,7 @@ fastapi = "*"
 sqlalchemy = "*"
 uvloop = "*"
 uvicorn = "*"
+alembic = "*"
 
 [requires]
 python_version = "3.8"
