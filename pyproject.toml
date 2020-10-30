@@ -16,6 +16,8 @@ uvloop = "*"
 uvicorn = "*"
 alembic = "*"
 psycopg2-binary = "^2.8.6"
+pytest = "^6.1.1"
+requests = "^2.24.0"
 
 [tool.poetry.dev-dependencies]
 

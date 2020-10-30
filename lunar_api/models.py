@@ -1,14 +1,16 @@
-from sqlalchemy import Column, Integer, DateTime, ForeignKey, String
+from sqlalchemy import Column, Integer, DateTime, ForeignKey, Unicode
+from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 
-from .database import Base
+
+Base = declarative_base()
 
 
 class Phase(Base):
     __tablename__ = 'phases'
 
     id = Column(Integer, primary_key=True, index=True)
-    name = Column(String)
+    name = Column(Unicode)
 
 
 class LunarEvent(Base):
@@ -17,9 +19,10 @@ class LunarEvent(Base):
     id = Column(Integer, primary_key=True)
     cycle = Column(Integer)
     datetime = Column(DateTime)
-    phase_id = Column(Integer, ForeignKey("phases.id"))
-
-    phase = relationship("Phase")
+    phase = Column(Unicode)
+    # phase_id = Column(Integer, ForeignKey("phases.id"))
+    #
+    # phase = relationship("Phase")
 
 
 class LunarMonth(Base):
@@ -29,7 +32,9 @@ class LunarMonth(Base):
     event_id = Column(Integer, ForeignKey(LunarEvent.id))
     event = relationship(LunarEvent)
     month = Column(Integer)
-    name = Column(String)
+    name = Column(Unicode)
+    start_date = Column(DateTime)
+    end_date = Column(DateTime)
 
 
 class Day(Base):
