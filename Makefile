@@ -9,11 +9,11 @@ build:
 	docker build -t lunar_api .
 
 rundev: build
-	docker rm -f lunar_api
+	docker rm -f lunar_api || true
 	docker run --name=lunar_api --network=host -it -d lunar_api
 
 runprod: build
-	docker rm -f lunar_api
+	docker rm -f lunar_api || true
 	docker run --name=lunar_api --network=host -it -d lunar_api
 logs:
 	docker logs lunar_api -f
