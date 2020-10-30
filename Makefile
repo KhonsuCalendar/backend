@@ -1,7 +1,7 @@
 dockerdb:
 	docker rm -f lunardb || true
 	mkdir -p data
-	docker run --name=lunardb -e POSTGRES_HOST_AUTH_METHOD=trust -v ./data:/var/lib/postgresql/data -p 5432:5432 -it -d postgres
+	docker run --name=lunardb -e POSTGRES_HOST_AUTH_METHOD=trust -v data:/var/lib/postgresql/data -p 5432:5432 -it -d postgres
 	sleep 1
 	poetry run alembic upgrade head
 
