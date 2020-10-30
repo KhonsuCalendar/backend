@@ -31,7 +31,7 @@ async def root():
 async def create_lunar_event(item: schemas.LunarEventCreate, db: Session = Depends(get_db)):
     if not item.datetime:
         raise(ValueError, 'Item must have a datettime in ISO format')
-    if not item.cycle:
+    if item.cycle is None:
         raise(ValueError, 'Item must have a cycle, generally the date of the new moon')
     if not item.phase:
         raise(ValueError, 'Item must have a phase, string format')
