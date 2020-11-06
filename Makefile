@@ -17,3 +17,9 @@ runprod: build
 	docker run --name=lunar_api --network=host -it -d lunar_api
 logs:
 	docker logs lunar_api -f
+
+devdb: dockerdb
+	python scripts/add_lunar_events.py
+	psql -h localhost -p 5431 -U postgres -d postgres
+
+rerundev: build rundev logs

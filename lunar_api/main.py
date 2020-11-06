@@ -44,5 +44,12 @@ def get_lunar_events(start_date: Optional[datetime] = None, end_date: Optional[d
     return lunar_events
 
 
+@app.get('/day/')
+def check_day_for_phase(date: datetime, db: Session = Depends(get_db)) -> str:
+    print(f'looking for a phase on {date=}')
+    phase = actions.get_phase_for_day(db, date)
+    return phase
+
+
 if __name__ == '__main__':
     uvicorn.run("main:app", host='0.0.0.0', port=8000, reload=True)

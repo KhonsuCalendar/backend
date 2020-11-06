@@ -20,3 +20,12 @@ def get_lunar_events(db: Session, start_date: Optional[datetime] = None, end_dat
     if end_date:
         query = query.filter(models.LunarEvent.datetime <= end_date)
     return query.all()
+
+
+def get_phase_for_day(db, date):
+    query = db.query(models.LunarEvent).filter(models.LunarEvent.datetime == date)
+    try:
+        query = query.all()[0]
+        return query.phase
+    except IndexError:
+        return ''
