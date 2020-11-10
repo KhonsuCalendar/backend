@@ -4,6 +4,7 @@ from typing import Optional, List
 import uvicorn
 from fastapi import FastAPI
 from fastapi import Depends
+from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 
 from lunar_api import actions
@@ -19,7 +20,21 @@ def get_db():
         db.close()
 
 
+origins = [
+    "*",
+]
+
+
 app = FastAPI()
+
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=False,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.get("/")
